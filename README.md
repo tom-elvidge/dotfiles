@@ -28,3 +28,10 @@ ssh-add ~/.ssh/id_ed25519
 ```
 
 [Add the public key to GithHub settings.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+Add git email and name.
+
+```PowerShell
+git config --global user.email "email here"
+git config --global user.name "GitHub username here"
+```
