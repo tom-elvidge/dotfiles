@@ -1,0 +1,1 @@
+oh-my-posh --init --shell pwsh --config $ENV:USERPROFILE\\Documents\\myrobbyrussel.omp.json | Invoke-Expression
