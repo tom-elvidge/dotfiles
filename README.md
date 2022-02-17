@@ -24,14 +24,15 @@ Create an ssh key for GitHub.
 
 ```PowerShell
 ssh-keygen -t ed25519-sk -C "email here"
-ssh-add ~/.ssh/id_ed25519
+ssh-add
 ```
 
 [Add the public key to GithHub settings.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-Add git email and name.
+Add git email and name. Make sure git is using OpenSSH so ssh key passphrases are saved.
 
 ```PowerShell
 git config --global user.email "email here"
 git config --global user.name "GitHub username here"
+git config --global core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe
 ```
