@@ -36,3 +36,5 @@ git config --global user.email "email here"
 git config --global user.name "GitHub username here"
 git config --global core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe
 ```
+
+VSCode Settings are synced by signing in with GitHub.
