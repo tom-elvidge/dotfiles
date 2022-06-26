@@ -1,40 +1,70 @@
 # dotfiles
 
-Collection of files to set up my base development environment. Additional configuration required on a per project basis.
+Collection of files to set up my base development environment (e.g. a shell, Visual Studio Code, kubectl, platform CLIs, etc). Additional configuration required on a per project basis.
 
 ## Windows
 
-Install DroidSansMono nerd font manually.
+Install PowerShell Core 7 with the instructions [here](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows). My preference is to do this outside of Chocolatey otherwise it can be easy to accidentally upgrade PowerShell from a PowerShell prompt which can create issues.
 
-Install Chocolatey manually.
-
-Execute the `Setup.ps1` which installs Chocolatey packages and moves configuration files to their expected locations.
+Run the install script from a Administrator PowerShell 7 shell.
 
 ```PowerShell
-.\Setup.ps1
+.\win\Install.ps1
 ```
 
-Configuration files installed by `Setup.ps1`.
+Add font to Windows Terminal settings manually.
 
-- `myrobbyrussel.omp.json` Oh My Posh configuration
-- `settings.json` Windows Terminal settings
-- `WindowsTerminalPowerShell.ps1` Custom PowerShell profile which is only executed from Windows Terminal
+```json
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "font": 
+            {
+                "face": "DroidSansMono NF",
+                "size": 11
+            }
+        },
+        ...
+    },
+    ...
+}
+```
 
-Create an ssh key for GitHub.
+Create new or add existing ssh keys to `.ssh`, see [instructions for configuring ssh keys with GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+Add all keys in `.ssh` to the ssh-agent. Thanks to OpenSSH this will be the only time are prompted for the passphrases.
 
 ```PowerShell
-ssh-keygen -t ed25519-sk -C "email here"
 ssh-add
 ```
 
-[Add the public key to GithHub settings.](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-
-Add git email and name. Make sure git is using OpenSSH so ssh key passphrases are saved.
+Configure email and username for git.
 
 ```PowerShell
 git config --global user.email "email here"
-git config --global user.name "GitHub username here"
-git config --global core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe
+git config --global user.name "tom-elvidge"
 ```
 
-VSCode Settings are synced by signing in with GitHub.
+todo
+
+- Install fonts in `Install.ps1` see [here](https://blog.simontimms.com/2021/06/11/installing-fonts/)
+- Visual Studio Code settings
+- Windows Terminal settings
+- `Install.ps1` should run in isolation and clone the repo to get required files
+- `Install.ps1` should create symlinks to locally cloned repo rather than copying
+
+## Linux
+
+todo
+
+## macOS
+
+todo
+
+## Codespaces
+
+Codespaces will clone dotfiles and execute an install script, see more [here](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account). This install script should call into my Linux dotfiles install script.
