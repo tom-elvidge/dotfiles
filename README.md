@@ -2,7 +2,7 @@
 
 A collection of files to set up my development environment on macOS.
 
-For updates make changes here and copy them to the home directory.
+Make here and copy them to the home directory.
 
 ```sh
 sudo cp -r .[^.]* ~
